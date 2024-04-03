@@ -19,7 +19,7 @@ def remove_all_text_from_pdf(pdf_path):
 
 # # # Example usage
 
-pdf_path = "0400034237962_712014486568 (1).pdf"
+pdf_path = "0400005231734_480016102591.pdf"
 remove_all_text_from_pdf(pdf_path)
 print("All text removed. Modified PDF saved as 'modified_output.pdf'.")
 

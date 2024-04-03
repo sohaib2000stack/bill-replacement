@@ -20,18 +20,15 @@ def replace_text_in_pdf(pdf_path, replacements):
 
                 # Replace the text
                 for text_instance in text_instances:
+                    # Get the coordinates of the text
                     x0, y0, x1, y1 = text_instance[:4]
-                    center_x = (x0 + x1) / 2
-                    center_y = (y0 + y1) / 2
-                    page.insert_text((center_x, center_y), replacement_text, fontsize=10, align=0)
-                    # Get the coordinates as a tuple
-                    # coordinates = (text_instance.x0, text_instance,0)
 
-                    # # Insert the replacement text as a text box
-                    # page.insert_textbox(coordinates, replacement_text, align=0)
+                    # Insert the replacement text at the same position as the original text
+                    page.insert_text((x0, y0), replacement_text, fontsize=10)
 
-        # Save the modified PDF
-        pdf_document.save(pdf_path, incremental=False)
+        # Save the modified PDF to a new file
+        new_pdf_path = "modified_" + pdf_path
+        pdf_document.save(new_pdf_path)
 
     except Exception as e:
         print(f"Error: {e}")
